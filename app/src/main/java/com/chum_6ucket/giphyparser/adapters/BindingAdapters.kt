@@ -1,0 +1,20 @@
+package com.chum_6ucket.giphyparser.adapters
+
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+
+@BindingAdapter("imageFromUrl")
+fun bindImageFromUrl(view: ImageView, imageUrl: String?) {
+
+    if (!imageUrl.isNullOrEmpty()) {
+        Glide.with(view.context)
+            .load(imageUrl)
+            .placeholder(ColorDrawable(Color.LTGRAY))
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .into(view)
+    }
+}
